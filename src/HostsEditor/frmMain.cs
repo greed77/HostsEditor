@@ -17,8 +17,12 @@ namespace HostsEditor
 
         public void ArrangeForm()
         {
-            lstHosts.Location = new System.Drawing.Point(5, 5);
-            lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 200));
+            this.lstHosts.Location = new System.Drawing.Point(5, 5);
+            this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 200));
+
+            this.lstHosts.Columns[0].Width = 20;
+            this.lstHosts.Columns[1].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
+            this.lstHosts.Columns[2].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
         }
 
         public void ReadHosts()
