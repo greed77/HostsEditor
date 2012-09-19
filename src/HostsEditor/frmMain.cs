@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace HostsEditor
 {
     public partial class frmMain : Form
     {
         private const string FILE_NAME = "C:\\Windows\\System32\\drivers\\etc\\hosts";
-        // private string FILE_NAME = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\drivers\etc\hosts";
 
         public frmMain()
         {
             InitializeComponent();
+            ArrangeForm();
             ReadHosts();
+        }
+
+        public void ArrangeForm()
+        {
+            lstHosts.Location = new System.Drawing.Point(5, 5);
+            lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 200));
         }
 
         public void ReadHosts()

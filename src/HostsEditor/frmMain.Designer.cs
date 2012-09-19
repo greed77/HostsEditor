@@ -32,6 +32,11 @@
             this.lstHostsEnabled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstHostsAddress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstHostsDomain = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtDomain = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblDomain = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstHosts
@@ -45,7 +50,7 @@
             this.lstHosts.Location = new System.Drawing.Point(12, 12);
             this.lstHosts.MultiSelect = false;
             this.lstHosts.Name = "lstHosts";
-            this.lstHosts.Size = new System.Drawing.Size(469, 218);
+            this.lstHosts.Size = new System.Drawing.Size(469, 160);
             this.lstHosts.TabIndex = 0;
             this.lstHosts.UseCompatibleStateImageBehavior = false;
             this.lstHosts.View = System.Windows.Forms.View.Details;
@@ -62,15 +67,62 @@
             // 
             this.lstHostsDomain.Text = "Domain";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(247, 234);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // txtDomain
+            // 
+            this.txtDomain.Location = new System.Drawing.Point(222, 208);
+            this.txtDomain.Name = "txtDomain";
+            this.txtDomain.Size = new System.Drawing.Size(100, 20);
+            this.txtDomain.TabIndex = 3;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(73, 208);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtAddress.TabIndex = 4;
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(73, 189);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(58, 13);
+            this.lblAddress.TabIndex = 5;
+            this.lblAddress.Text = "IP Address";
+            // 
+            // lblDomain
+            // 
+            this.lblDomain.AutoSize = true;
+            this.lblDomain.Location = new System.Drawing.Point(219, 189);
+            this.lblDomain.Name = "lblDomain";
+            this.lblDomain.Size = new System.Drawing.Size(43, 13);
+            this.lblDomain.TabIndex = 6;
+            this.lblDomain.Text = "Domain";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 428);
+            this.ClientSize = new System.Drawing.Size(633, 318);
+            this.Controls.Add(this.lblDomain);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtDomain);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lstHosts);
             this.Name = "frmMain";
             this.Text = "Hosts File Editor";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -80,6 +132,11 @@
         private System.Windows.Forms.ColumnHeader lstHostsEnabled;
         private System.Windows.Forms.ColumnHeader lstHostsAddress;
         private System.Windows.Forms.ColumnHeader lstHostsDomain;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtDomain;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblDomain;
     }
 }
 
