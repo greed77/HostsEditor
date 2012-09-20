@@ -18,11 +18,19 @@ namespace HostsEditor
         public void ArrangeForm()
         {
             this.lstHosts.Location = new System.Drawing.Point(5, 5);
-            this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 200));
+            this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 150));
 
             this.lstHosts.Columns[0].Width = 20;
             this.lstHosts.Columns[1].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
             this.lstHosts.Columns[2].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
+
+            this.lblAddress.Location = new System.Drawing.Point(5, (this.Height - 125));
+            this.txtAddress.Location = new System.Drawing.Point(5, (this.Height - 100));
+
+            this.lblDomain.Location = new System.Drawing.Point(150, (this.Height - 125));
+            this.txtDomain.Location = new System.Drawing.Point(150, (this.Height - 100));
+
+            this.btnSave.Location = new System.Drawing.Point(300, (this.Height - 102));
         }
 
         public void ReadHosts()
@@ -40,31 +48,33 @@ namespace HostsEditor
                 using (StreamReader sr = File.OpenText(FILE_NAME))
                 {
                     String input;
-                    string[] saLvwItem = new string[3];
 
                     while ((input = sr.ReadLine()) != null)
                     {
-                        string strVal = input.ToString();
-                        string[] lines = strVal.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        bool bDisabled = input.StartsWith("#");
 
-                        if (lines.Length > 1)
+                        input = input.Replace("#", "").Trim();
+                        string[] line = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (line.Length == 2)
                         {
-                            string[] line = lines[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                            if (line.Length > 1)
+                            ListViewItem item = new ListViewItem();
+                            item.SubItems.Add(line[0]);
+                            item.SubItems.Add(line[1]);
+                            if (bDisabled)
                             {
-                                ListViewItem item = new ListViewItem();
-                                // item.SubItems.Add(lines[0]);
-                                item.SubItems.Add(line[0]);
-                                item.SubItems.Add(line[1]);
-                                lstHosts.Items.Add(item);
+                                item.Checked = false;
                             }
+                            else
+                            {
+                                item.Checked = true;
+                            }
+                            lstHosts.Items.Add(item);
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                // Let the user know what went wrong.
                 MessageBox.Show("The file could not be read\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -72,6 +82,20 @@ namespace HostsEditor
 
         public void WriteHosts()
         {
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            ArrangeForm();
+        }
+
+        private void lstHosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.lstHosts.SelectedItems.Count > 0)
+            {
+                this.txtAddress.Text = this.lstHosts.SelectedItems[0].SubItems[1].Text;
+                this.txtDomain.Text = this.lstHosts.SelectedItems[0].SubItems[2].Text;
+            }
         }
     }
 }

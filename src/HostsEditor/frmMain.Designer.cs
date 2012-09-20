@@ -54,6 +54,7 @@
             this.lstHosts.TabIndex = 0;
             this.lstHosts.UseCompatibleStateImageBehavior = false;
             this.lstHosts.View = System.Windows.Forms.View.Details;
+            this.lstHosts.SelectedIndexChanged += new System.EventHandler(this.lstHosts_SelectedIndexChanged);
             // 
             // lstHostsEnabled
             // 
@@ -69,7 +70,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(247, 234);
+            this.btnSave.Location = new System.Drawing.Point(381, 206);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -80,14 +81,14 @@
             // 
             this.txtDomain.Location = new System.Drawing.Point(222, 208);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(100, 20);
+            this.txtDomain.Size = new System.Drawing.Size(135, 20);
             this.txtDomain.TabIndex = 3;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(73, 208);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(100, 20);
+            this.txtAddress.Size = new System.Drawing.Size(135, 20);
             this.txtAddress.TabIndex = 4;
             // 
             // lblAddress
@@ -112,15 +113,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 318);
+            this.ClientSize = new System.Drawing.Size(573, 288);
             this.Controls.Add(this.lblDomain);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtDomain);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lstHosts);
+            this.MinimumSize = new System.Drawing.Size(450, 250);
             this.Name = "frmMain";
             this.Text = "Hosts File Editor";
+            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
