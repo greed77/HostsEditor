@@ -17,7 +17,7 @@ namespace HostsEditor
 
         public void ArrangeForm()
         {
-            this.lstHosts.Location = new System.Drawing.Point(5, 5);
+            this.lstHosts.Location = new System.Drawing.Point(5, 25);
             this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 150));
 
             this.lstHosts.Columns[0].Width = 20;
@@ -31,6 +31,9 @@ namespace HostsEditor
             this.txtDomain.Location = new System.Drawing.Point(150, (this.Height - 100));
 
             this.btnSave.Location = new System.Drawing.Point(300, (this.Height - 102));
+            this.btnWrite.Location = new System.Drawing.Point((this.Width - 100), (this.Height - 102));
+            this.btnConfirm.Location = new System.Drawing.Point((this.Width - 100), (this.Height - 102));
+            this.btnConfirm.Visible = false;
         }
 
         public void ReadHosts()
@@ -120,9 +123,39 @@ namespace HostsEditor
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = lstHosts.SelectedIndices[0];
+            if (index != -1)
+            {
+                this.lstHosts.Items[index].Remove();
+            }
+        }
+
+        private void mnuHosts_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lstHosts.SelectedIndices.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("todo: show about form");
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+            this.btnConfirm.Visible = true;
+            this.btnWrite.Visible = false;
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             WriteHosts();
+            this.btnWrite.Visible = true;
+            this.btnConfirm.Visible = false;
         }
     }
 }
