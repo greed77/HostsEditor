@@ -82,6 +82,28 @@ namespace HostsEditor
 
         public void WriteHosts()
         {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(FILE_NAME))
+                {
+                    foreach (ListViewItem item in this.lstHosts.Items)
+                    {
+                        String newline = item.SubItems[1].Text + "     " + item.SubItems[2].Text;
+
+                        if (item.Checked == false)
+                        {
+                            newline = "# " + newline;
+                        }
+                        writer.WriteLine(newline);
+                    }
+                }
+                MessageBox.Show("Windows hosts file successfully written.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("The file could not be read\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void frmMain_Resize(object sender, EventArgs e)
@@ -96,6 +118,11 @@ namespace HostsEditor
                 this.txtAddress.Text = this.lstHosts.SelectedItems[0].SubItems[1].Text;
                 this.txtDomain.Text = this.lstHosts.SelectedItems[0].SubItems[2].Text;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            WriteHosts();
         }
     }
 }
