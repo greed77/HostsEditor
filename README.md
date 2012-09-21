@@ -1,4 +1,6 @@
 HostsEditor
 ===========
 
-A GUI for the windows hosts file
+A GUI for the windows hosts file.
+
+Currently only works on Windows 7.
