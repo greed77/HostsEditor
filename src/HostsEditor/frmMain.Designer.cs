@@ -44,7 +44,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.mnuHosts.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,8 @@
             this.lstHosts.ContextMenuStrip = this.mnuHosts;
             this.lstHosts.FullRowSelect = true;
             this.lstHosts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lstHosts.Location = new System.Drawing.Point(12, 12);
+            this.lstHosts.HideSelection = false;
+            this.lstHosts.Location = new System.Drawing.Point(12, 28);
             this.lstHosts.MultiSelect = false;
             this.lstHosts.Name = "lstHosts";
             this.lstHosts.Size = new System.Drawing.Size(469, 160);
@@ -97,7 +98,7 @@
             // 
             // btnWrite
             // 
-            this.btnWrite.Location = new System.Drawing.Point(381, 206);
+            this.btnWrite.Location = new System.Drawing.Point(378, 247);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(75, 23);
             this.btnWrite.TabIndex = 1;
@@ -107,14 +108,14 @@
             // 
             // txtDomain
             // 
-            this.txtDomain.Location = new System.Drawing.Point(165, 209);
+            this.txtDomain.Location = new System.Drawing.Point(165, 218);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(135, 20);
             this.txtDomain.TabIndex = 3;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(16, 209);
+            this.txtAddress.Location = new System.Drawing.Point(16, 218);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(135, 20);
             this.txtAddress.TabIndex = 4;
@@ -122,7 +123,7 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(16, 190);
+            this.lblAddress.Location = new System.Drawing.Point(16, 199);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(58, 13);
             this.lblAddress.TabIndex = 5;
@@ -131,7 +132,7 @@
             // lblDomain
             // 
             this.lblDomain.AutoSize = true;
-            this.lblDomain.Location = new System.Drawing.Point(162, 190);
+            this.lblDomain.Location = new System.Drawing.Point(162, 199);
             this.lblDomain.Name = "lblDomain";
             this.lblDomain.Size = new System.Drawing.Size(43, 13);
             this.lblDomain.TabIndex = 6;
@@ -143,6 +144,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.menuStrip1.Size = new System.Drawing.Size(573, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
@@ -164,29 +166,30 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(16, 247);
+            this.btnSave.Location = new System.Drawing.Point(16, 256);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save host";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnConfirm
+            // btnReset
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(381, 236);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.TabIndex = 9;
-            this.btnConfirm.Text = "You sure?";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnReset.Location = new System.Drawing.Point(378, 207);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 288);
-            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnWrite);
@@ -196,7 +199,8 @@
             this.Controls.Add(this.txtDomain);
             this.Controls.Add(this.lstHosts);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(450, 250);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(475, 250);
             this.Name = "frmMain";
             this.Text = "Hosts File Editor";
             this.Resize += new System.EventHandler(this.frmMain_Resize);
@@ -225,7 +229,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

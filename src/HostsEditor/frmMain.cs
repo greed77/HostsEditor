@@ -10,6 +10,7 @@ namespace HostsEditor
 
         public frmMain()
         {
+            this.Icon = Properties.Resources.edit_ico;
             InitializeComponent();
             ArrangeForm();
             ReadHosts();
@@ -24,16 +25,26 @@ namespace HostsEditor
             this.lstHosts.Columns[1].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
             this.lstHosts.Columns[2].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
 
-            this.lblAddress.Location = new System.Drawing.Point(5, (this.Height - 125));
+            this.lblAddress.Location = new System.Drawing.Point(5, (this.Height - 118));
             this.txtAddress.Location = new System.Drawing.Point(5, (this.Height - 100));
 
-            this.lblDomain.Location = new System.Drawing.Point(150, (this.Height - 125));
+            this.lblDomain.Location = new System.Drawing.Point(150, (this.Height - 118));
             this.txtDomain.Location = new System.Drawing.Point(150, (this.Height - 100));
 
-            this.btnSave.Location = new System.Drawing.Point(300, (this.Height - 102));
-            this.btnWrite.Location = new System.Drawing.Point((this.Width - 100), (this.Height - 102));
-            this.btnConfirm.Location = new System.Drawing.Point((this.Width - 100), (this.Height - 102));
-            this.btnConfirm.Visible = false;
+            this.btnSave.Location = new System.Drawing.Point(210, (this.Height - 70));
+
+            this.btnReset.Location = new System.Drawing.Point((this.Width - 95), (this.Height - 102));
+            this.btnWrite.Location = new System.Drawing.Point((this.Width - 95), (this.Height - 70));
+
+            if (this.lstHosts.SelectedItems.Count > 0)
+            {
+                this.btnSave.Text = "Save host";
+            }
+            else
+            {
+                this.btnSave.Text = "Add host";
+            }
+
         }
 
         public void ReadHosts()
@@ -120,6 +131,13 @@ namespace HostsEditor
             {
                 this.txtAddress.Text = this.lstHosts.SelectedItems[0].SubItems[1].Text;
                 this.txtDomain.Text = this.lstHosts.SelectedItems[0].SubItems[2].Text;
+                this.btnSave.Text = "Save host";
+            }
+            else
+            {
+                this.txtAddress.Text = "";
+                this.txtDomain.Text = "";
+                this.btnSave.Text = "Add host";
             }
         }
 
@@ -142,20 +160,53 @@ namespace HostsEditor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("todo: show about form");
+            frmAbout form = new frmAbout();
+            //MessageBox.Show("todo: show about form");
+            form.Show();
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
-            this.btnConfirm.Visible = true;
-            this.btnWrite.Visible = false;
+            if (MessageBox.Show("Are you sure?\n\nThis Action cannot be undone.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                WriteHosts();
+            }
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-            WriteHosts();
-            this.btnWrite.Visible = true;
-            this.btnConfirm.Visible = false;
+            ReadHosts();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // add new host
+            if (this.txtAddress.Text.Trim() == "" || this.txtDomain.Text.Trim() == "")
+            {
+                MessageBox.Show("You need to specify both an address and a domain.");
+            }
+            else
+            {
+                if (this.lstHosts.SelectedIndices.Count > 0)
+                {
+                    // update host
+                    int index = this.lstHosts.SelectedIndices[0];
+                    //MessageBox.Show(this.lstHosts.SelectedIndices[0].ToString());
+                    this.lstHosts.Items[index].SubItems[1].Text = this.txtAddress.Text;
+                    this.lstHosts.Items[index].SubItems[2].Text = this.txtDomain.Text;
+                    this.lstHosts.SelectedItems.Clear();
+                }
+                else
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(this.txtAddress.Text);
+                    item.SubItems.Add(this.txtDomain.Text);
+                    item.Checked = true;
+                    lstHosts.Items.Add(item);
+                    this.txtAddress.Text = "";
+                    this.txtDomain.Text = "";
+                }
+            }
         }
     }
 }

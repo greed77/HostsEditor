@@ -59,5 +59,19 @@ namespace HostsEditor.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon edit_ico {
+            get {
+                object obj = ResourceManager.GetObject("edit_ico", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap icon_128 {
+            get {
+                object obj = ResourceManager.GetObject("icon_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
