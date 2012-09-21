@@ -7,50 +7,35 @@ namespace HostsEditor
     public partial class frmMain : Form
     {
         private const string FILE_NAME = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+        public bool has_loaded_data = false;
 
         public frmMain()
         {
             this.Icon = Properties.Resources.edit_ico;
             InitializeComponent();
-            ArrangeForm();
             ReadHosts();
-            this.txtAddress.Focus();
+            has_loaded_data = true;
         }
 
-        public void ArrangeForm()
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.lstHosts.Location = new System.Drawing.Point(5, 25);
-            this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 150));
+            this.pnlAddHost.Show();
+        }
 
-            this.lstHosts.Columns[0].Width = 42;
-            this.lstHosts.Columns[1].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
-            this.lstHosts.Columns[2].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
+        private void btnAddCancel_Click(object sender, EventArgs e)
+        {
+            this.pnlAddHost.Hide();
+        }
 
-            this.lblAddress.Location = new System.Drawing.Point(5, (this.Height - 118));
-            this.txtAddress.Location = new System.Drawing.Point(5, (this.Height - 100));
-
-            this.lblDomain.Location = new System.Drawing.Point(150, (this.Height - 118));
-            this.txtDomain.Location = new System.Drawing.Point(150, (this.Height - 100));
-
-            this.btnSave.Location = new System.Drawing.Point(210, (this.Height - 70));
-
-            this.btnReset.Location = new System.Drawing.Point((this.Width - 95), (this.Height - 102));
-            this.btnWrite.Location = new System.Drawing.Point((this.Width - 95), (this.Height - 70));
-
-            if (this.lstHosts.SelectedItems.Count > 0)
-            {
-                this.btnSave.Text = "Save host";
-            }
-            else
-            {
-                this.btnSave.Text = "Add host";
-            }
-
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout form = new frmAbout();
+            form.Show();
         }
 
         public void ReadHosts()
         {
-            lstHosts.Items.Clear();
+            //lstHosts.Items.Clear();
 
             if (!File.Exists(FILE_NAME))
             {
@@ -72,18 +57,19 @@ namespace HostsEditor
                         string[] line = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         if (line.Length == 2)
                         {
-                            ListViewItem item = new ListViewItem();
-                            item.SubItems.Add(line[0]);
-                            item.SubItems.Add(line[1]);
+                            int n = this.dgvHosts.Rows.Add();
+
                             if (bDisabled)
                             {
-                                item.Checked = false;
+                                this.dgvHosts.Rows[n].Cells[0].Value = false;
                             }
                             else
                             {
-                                item.Checked = true;
+                                this.dgvHosts.Rows[n].Cells[0].Value = true;
                             }
-                            lstHosts.Items.Add(item);
+                                                        
+                            this.dgvHosts.Rows[n].Cells[1].Value = line[0];
+                            this.dgvHosts.Rows[n].Cells[2].Value = line[1];
                         }
                     }
                 }
@@ -97,117 +83,60 @@ namespace HostsEditor
 
         public void WriteHosts()
         {
-            try
+            if (has_loaded_data)
             {
-                using (StreamWriter writer = new StreamWriter(FILE_NAME))
+                try
                 {
-                    foreach (ListViewItem item in this.lstHosts.Items)
+                    using (StreamWriter writer = new StreamWriter(FILE_NAME))
                     {
-                        String newline = item.SubItems[1].Text + "     " + item.SubItems[2].Text;
-
-                        if (item.Checked == false)
+                        foreach (DataGridViewRow item in this.dgvHosts.Rows)
                         {
-                            newline = "# " + newline;
+                            String newline = item.Cells[1].Value + "     " + item.Cells[2].Value;
+
+                            if (Convert.ToBoolean(item.Cells[0].Value) == false)
+                            {
+                                newline = "# " + newline;
+                            }
+                            writer.WriteLine(newline);
                         }
-                        writer.WriteLine(newline);
                     }
+                    //MessageBox.Show("Windows hosts file successfully written.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Windows hosts file successfully written.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("The file could not be read\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception e)
+                {
+                    MessageBox.Show("The file could not be written\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
 
-        private void frmMain_Resize(object sender, EventArgs e)
+        private void dgvHosts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            ArrangeForm();
-        }
-
-        private void lstHosts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.lstHosts.SelectedItems.Count > 0)
-            {
-                this.txtAddress.Text = this.lstHosts.SelectedItems[0].SubItems[1].Text;
-                this.txtDomain.Text = this.lstHosts.SelectedItems[0].SubItems[2].Text;
-                this.btnSave.Text = "Save host";
-            }
-            else
-            {
-                this.txtAddress.Text = "";
-                this.txtDomain.Text = "";
-                this.btnSave.Text = "Add host";
-            }
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int index = lstHosts.SelectedIndices[0];
-            if (index != -1)
-            {
-                this.lstHosts.Items[index].Remove();
-            }
-        }
-
-        private void mnuHosts_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (lstHosts.SelectedIndices.Count == 0)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmAbout form = new frmAbout();
-            //MessageBox.Show("todo: show about form");
-            form.Show();
-        }
-
-        private void btnWrite_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure?\n\nThis Action cannot be undone.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-                WriteHosts();
-            }
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            ReadHosts();
+            WriteHosts();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // add new host
             if (this.txtAddress.Text.Trim() == "" || this.txtDomain.Text.Trim() == "")
             {
                 MessageBox.Show("You need to specify both an address and a domain.");
             }
             else
             {
-                if (this.lstHosts.SelectedIndices.Count > 0)
-                {
-                    // update host
-                    int index = this.lstHosts.SelectedIndices[0];
-                    //MessageBox.Show(this.lstHosts.SelectedIndices[0].ToString());
-                    this.lstHosts.Items[index].SubItems[1].Text = this.txtAddress.Text;
-                    this.lstHosts.Items[index].SubItems[2].Text = this.txtDomain.Text;
-                    this.lstHosts.SelectedItems.Clear();
-                }
-                else
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.SubItems.Add(this.txtAddress.Text);
-                    item.SubItems.Add(this.txtDomain.Text);
-                    item.Checked = true;
-                    lstHosts.Items.Add(item);
-                    this.txtAddress.Text = "";
-                    this.txtDomain.Text = "";
-                }
+                int n = this.dgvHosts.Rows.Add();
+                has_loaded_data = false;
+
+                this.dgvHosts.Rows[n].Cells[0].Value = true;
+                this.dgvHosts.Rows[n].Cells[1].Value = this.txtAddress.Text;
+                this.dgvHosts.Rows[n].Cells[2].Value = this.txtDomain.Text;
+                has_loaded_data = true;
+                WriteHosts();
             }
+        }
+
+        private void dgvHosts_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            WriteHosts();
         }
     }
 }

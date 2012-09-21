@@ -28,115 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lstHosts = new System.Windows.Forms.ListView();
-            this.lstHostsEnabled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstHostsAddress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstHostsDomain = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mnuHosts = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnWrite = new System.Windows.Forms.Button();
             this.txtDomain = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblDomain = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.mnuHosts.SuspendLayout();
+            this.dgvHosts = new System.Windows.Forms.DataGridView();
+            this.pnlBottom = new System.Windows.Forms.Panel();
+            this.pnlAddHost = new System.Windows.Forms.Panel();
+            this.btnAddCancel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dgvHostsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvHostsAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvHostsDomain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).BeginInit();
+            this.pnlBottom.SuspendLayout();
+            this.pnlAddHost.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lstHosts
-            // 
-            this.lstHosts.CheckBoxes = true;
-            this.lstHosts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lstHostsEnabled,
-            this.lstHostsAddress,
-            this.lstHostsDomain});
-            this.lstHosts.ContextMenuStrip = this.mnuHosts;
-            this.lstHosts.FullRowSelect = true;
-            this.lstHosts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lstHosts.HideSelection = false;
-            this.lstHosts.Location = new System.Drawing.Point(12, 28);
-            this.lstHosts.MultiSelect = false;
-            this.lstHosts.Name = "lstHosts";
-            this.lstHosts.Size = new System.Drawing.Size(469, 160);
-            this.lstHosts.TabIndex = 10;
-            this.lstHosts.UseCompatibleStateImageBehavior = false;
-            this.lstHosts.View = System.Windows.Forms.View.Details;
-            this.lstHosts.SelectedIndexChanged += new System.EventHandler(this.lstHosts_SelectedIndexChanged);
-            // 
-            // lstHostsEnabled
-            // 
-            this.lstHostsEnabled.Text = "Active";
-            // 
-            // lstHostsAddress
-            // 
-            this.lstHostsAddress.Text = "IP Address";
-            // 
-            // lstHostsDomain
-            // 
-            this.lstHostsDomain.Text = "Domain";
-            // 
-            // mnuHosts
-            // 
-            this.mnuHosts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.mnuHosts.Name = "mnuHosts";
-            this.mnuHosts.Size = new System.Drawing.Size(108, 26);
-            this.mnuHosts.Opening += new System.ComponentModel.CancelEventHandler(this.mnuHosts_Opening);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // btnWrite
-            // 
-            this.btnWrite.Location = new System.Drawing.Point(378, 247);
-            this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(75, 23);
-            this.btnWrite.TabIndex = 5;
-            this.btnWrite.Text = "Write file";
-            this.btnWrite.UseVisualStyleBackColor = true;
-            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
             // txtDomain
             // 
-            this.txtDomain.Location = new System.Drawing.Point(165, 218);
+            this.txtDomain.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtDomain.Location = new System.Drawing.Point(153, 5);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(135, 20);
             this.txtDomain.TabIndex = 1;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(16, 218);
+            this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtAddress.Location = new System.Drawing.Point(4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(135, 20);
             this.txtAddress.TabIndex = 0;
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(16, 199);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(58, 13);
-            this.lblAddress.TabIndex = 5;
-            this.lblAddress.Text = "IP Address";
-            // 
-            // lblDomain
-            // 
-            this.lblDomain.AutoSize = true;
-            this.lblDomain.Location = new System.Drawing.Point(162, 199);
-            this.lblDomain.Name = "lblDomain";
-            this.lblDomain.Size = new System.Drawing.Size(43, 13);
-            this.lblDomain.TabIndex = 6;
-            this.lblDomain.Text = "Domain";
             // 
             // menuStrip1
             // 
@@ -145,7 +71,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuStrip1.Size = new System.Drawing.Size(573, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -160,53 +86,119 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(16, 256);
+            this.btnSave.Location = new System.Drawing.Point(294, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 24);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save host";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnReset
+            // dgvHosts
             // 
-            this.btnReset.Location = new System.Drawing.Point(378, 207);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.dgvHosts.AllowUserToAddRows = false;
+            this.dgvHosts.AllowUserToResizeColumns = false;
+            this.dgvHosts.AllowUserToResizeRows = false;
+            this.dgvHosts.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHosts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHosts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvHostsActive,
+            this.dgvHostsAddress,
+            this.dgvHostsDomain});
+            this.dgvHosts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHosts.Location = new System.Drawing.Point(0, 24);
+            this.dgvHosts.MultiSelect = false;
+            this.dgvHosts.Name = "dgvHosts";
+            this.dgvHosts.Size = new System.Drawing.Size(484, 158);
+            this.dgvHosts.TabIndex = 11;
+            this.dgvHosts.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHosts_CellValueChanged);
+            this.dgvHosts.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvHosts_RowsRemoved);
+            // 
+            // pnlBottom
+            // 
+            this.pnlBottom.Controls.Add(this.pnlAddHost);
+            this.pnlBottom.Controls.Add(this.btnAdd);
+            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom.Location = new System.Drawing.Point(0, 182);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(484, 30);
+            this.pnlBottom.TabIndex = 12;
+            // 
+            // pnlAddHost
+            // 
+            this.pnlAddHost.Controls.Add(this.btnAddCancel);
+            this.pnlAddHost.Controls.Add(this.btnSave);
+            this.pnlAddHost.Controls.Add(this.txtDomain);
+            this.pnlAddHost.Controls.Add(this.txtAddress);
+            this.pnlAddHost.Location = new System.Drawing.Point(0, 0);
+            this.pnlAddHost.Name = "pnlAddHost";
+            this.pnlAddHost.Size = new System.Drawing.Size(459, 30);
+            this.pnlAddHost.TabIndex = 13;
+            this.pnlAddHost.Visible = false;
+            // 
+            // btnAddCancel
+            // 
+            this.btnAddCancel.Location = new System.Drawing.Point(376, 3);
+            this.btnAddCancel.Name = "btnAddCancel";
+            this.btnAddCancel.Size = new System.Drawing.Size(75, 24);
+            this.btnAddCancel.TabIndex = 4;
+            this.btnAddCancel.Text = "Cancel";
+            this.btnAddCancel.UseVisualStyleBackColor = true;
+            this.btnAddCancel.Click += new System.EventHandler(this.btnAddCancel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnAdd.Location = new System.Drawing.Point(2, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 24);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Add host";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // dgvHostsActive
+            // 
+            this.dgvHostsActive.HeaderText = "Active";
+            this.dgvHostsActive.Name = "dgvHostsActive";
+            this.dgvHostsActive.Width = 42;
+            // 
+            // dgvHostsAddress
+            // 
+            this.dgvHostsAddress.HeaderText = "IP Address";
+            this.dgvHostsAddress.Name = "dgvHostsAddress";
+            // 
+            // dgvHostsDomain
+            // 
+            this.dgvHostsDomain.HeaderText = "Domain";
+            this.dgvHostsDomain.Name = "dgvHostsDomain";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 288);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnSave);
+            this.ClientSize = new System.Drawing.Size(484, 212);
+            this.Controls.Add(this.dgvHosts);
+            this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnWrite);
-            this.Controls.Add(this.lblDomain);
-            this.Controls.Add(this.lblAddress);
-            this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.txtDomain);
-            this.Controls.Add(this.lstHosts);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(475, 250);
+            this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "frmMain";
             this.Text = "Hosts File Editor";
-            this.Resize += new System.EventHandler(this.frmMain_Resize);
-            this.mnuHosts.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).EndInit();
+            this.pnlBottom.ResumeLayout(false);
+            this.pnlAddHost.ResumeLayout(false);
+            this.pnlAddHost.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,22 +206,20 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lstHosts;
-        private System.Windows.Forms.ColumnHeader lstHostsEnabled;
-        private System.Windows.Forms.ColumnHeader lstHostsAddress;
-        private System.Windows.Forms.ColumnHeader lstHostsDomain;
-        private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.TextBox txtDomain;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.Label lblDomain;
-        private System.Windows.Forms.ContextMenuStrip mnuHosts;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.DataGridView dgvHosts;
+        private System.Windows.Forms.Panel pnlBottom;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Panel pnlAddHost;
+        private System.Windows.Forms.Button btnAddCancel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvHostsActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvHostsAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvHostsDomain;
     }
 }
 
