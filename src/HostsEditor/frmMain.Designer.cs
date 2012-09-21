@@ -64,14 +64,14 @@
             this.lstHosts.MultiSelect = false;
             this.lstHosts.Name = "lstHosts";
             this.lstHosts.Size = new System.Drawing.Size(469, 160);
-            this.lstHosts.TabIndex = 0;
+            this.lstHosts.TabIndex = 10;
             this.lstHosts.UseCompatibleStateImageBehavior = false;
             this.lstHosts.View = System.Windows.Forms.View.Details;
             this.lstHosts.SelectedIndexChanged += new System.EventHandler(this.lstHosts_SelectedIndexChanged);
             // 
             // lstHostsEnabled
             // 
-            this.lstHostsEnabled.Text = "";
+            this.lstHostsEnabled.Text = "Active";
             // 
             // lstHostsAddress
             // 
@@ -101,7 +101,7 @@
             this.btnWrite.Location = new System.Drawing.Point(378, 247);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(75, 23);
-            this.btnWrite.TabIndex = 1;
+            this.btnWrite.TabIndex = 5;
             this.btnWrite.Text = "Write file";
             this.btnWrite.UseVisualStyleBackColor = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
@@ -111,14 +111,14 @@
             this.txtDomain.Location = new System.Drawing.Point(165, 218);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(135, 20);
-            this.txtDomain.TabIndex = 3;
+            this.txtDomain.TabIndex = 1;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(16, 218);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(135, 20);
-            this.txtAddress.TabIndex = 4;
+            this.txtAddress.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -169,7 +169,7 @@
             this.btnSave.Location = new System.Drawing.Point(16, 256);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save host";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -179,7 +179,7 @@
             this.btnReset.Location = new System.Drawing.Point(378, 207);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 9;
+            this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);

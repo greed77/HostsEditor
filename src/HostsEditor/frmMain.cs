@@ -14,6 +14,7 @@ namespace HostsEditor
             InitializeComponent();
             ArrangeForm();
             ReadHosts();
+            this.txtAddress.Focus();
         }
 
         public void ArrangeForm()
@@ -21,7 +22,7 @@ namespace HostsEditor
             this.lstHosts.Location = new System.Drawing.Point(5, 25);
             this.lstHosts.Size = new System.Drawing.Size((this.Width - 25), (this.Height - 150));
 
-            this.lstHosts.Columns[0].Width = 20;
+            this.lstHosts.Columns[0].Width = 42;
             this.lstHosts.Columns[1].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
             this.lstHosts.Columns[2].Width = ((this.lstHosts.Width - this.lstHosts.Columns[0].Width) / 2) - 2;
 
