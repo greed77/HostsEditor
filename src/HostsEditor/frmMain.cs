@@ -6,15 +6,14 @@ namespace HostsEditor
 {
     public partial class frmMain : Form
     {
-        private const string FILE_NAME = "C:\\Windows\\System32\\drivers\\etc\\hosts";
+        public string host_file = Environment.SystemDirectory + "\\drivers\\etc\\hosts";
         public bool has_loaded_data = false;
 
         public frmMain()
         {
             this.Icon = Properties.Resources.edit_ico;
             InitializeComponent();
-            ReadHosts();
-            has_loaded_data = true;
+            ReadHosts(host_file);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -27,31 +26,29 @@ namespace HostsEditor
             this.pnlAddHost.Hide();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        public void ReadHosts(string file_name)
         {
-            frmAbout form = new frmAbout();
-            form.Show();
-        }
-
-        public void ReadHosts()
-        {
-            //lstHosts.Items.Clear();
-
-            if (!File.Exists(FILE_NAME))
+            if (!File.Exists(file_name))
             {
-                MessageBox.Show(FILE_NAME + " does not exist.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(file_name + " does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            has_loaded_data = false;
             try
             {
-                using (StreamReader sr = File.OpenText(FILE_NAME))
+                using (StreamReader sr = File.OpenText(file_name))
                 {
                     String input;
+
+                    this.dgvHosts.Rows.Clear();
+                    this.txtAdvanced.Text = "";
 
                     while ((input = sr.ReadLine()) != null)
                     {
                         bool bDisabled = input.StartsWith("#");
+
+                        this.txtAdvanced.Text += input + Environment.NewLine;
 
                         input = input.Replace("#", "").Trim();
                         string[] line = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -74,20 +71,20 @@ namespace HostsEditor
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("The file could not be read\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The file could not be read\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            has_loaded_data = true;
         }
 
-        public void WriteHosts()
+        public void WriteHosts(string file_name)
         {
             if (has_loaded_data)
             {
                 try
                 {
-                    using (StreamWriter writer = new StreamWriter(FILE_NAME))
+                    using (StreamWriter writer = new StreamWriter(file_name))
                     {
                         foreach (DataGridViewRow item in this.dgvHosts.Rows)
                         {
@@ -100,43 +97,146 @@ namespace HostsEditor
                             writer.WriteLine(newline);
                         }
                     }
-                    //MessageBox.Show("Windows hosts file successfully written.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("The file could not be written\n" + e.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The file could not be written\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void dgvHosts_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            WriteHosts();
+            if (has_loaded_data)
+            {
+                WriteHosts(host_file);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.txtAddress.Text.Trim() == "" || this.txtDomain.Text.Trim() == "")
+            if (this.txtAddress.Text.Trim() == "" || this.txtAddress.Text.Trim() == "IP Address" || this.txtDomain.Text.Trim() == "" || this.txtDomain.Text.Trim() == "Domain")
             {
                 MessageBox.Show("You need to specify both an address and a domain.");
             }
             else
             {
-                int n = this.dgvHosts.Rows.Add();
                 has_loaded_data = false;
-
+                int n = this.dgvHosts.Rows.Add();
                 this.dgvHosts.Rows[n].Cells[0].Value = true;
                 this.dgvHosts.Rows[n].Cells[1].Value = this.txtAddress.Text;
                 this.dgvHosts.Rows[n].Cells[2].Value = this.txtDomain.Text;
                 has_loaded_data = true;
-                WriteHosts();
+
+                this.txtAddress.Text = "";
+                this.txtDomain.Text = "";
+
+                WriteHosts(host_file);
             }
         }
 
         private void dgvHosts_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            WriteHosts();
+            WriteHosts(host_file);
+        }
+
+        private void btnAdvancedSave_Click(object sender, EventArgs e)
+        {
+            if (has_loaded_data)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(host_file))
+                    {
+                        foreach (string line in this.txtAdvanced.Lines)
+                        {
+                            writer.WriteLine(line);
+                        }
+                    }
+                    MessageBox.Show("Windows hosts file successfully written.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The file could not be written\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void tabGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReadHosts(host_file);
+        }
+
+        private void mnuAboutHelp_Click(object sender, EventArgs e)
+        {
+            frmAbout form = new frmAbout();
+            form.Show();
+        }
+
+        private void mnuFileExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void mnuFileImport_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.dlgOpen.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string file = dlgOpen.FileName;
+                try
+                {
+                    ReadHosts(file);
+                    WriteHosts(host_file);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("The file could not be read\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void mnuFileExport_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.dlgExport.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string file = dlgExport.FileName;
+                try
+                {
+                    WriteHosts(file);
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("There was an error exporting the file.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtAddress_Click(object sender, EventArgs e)
+        {
+            this.txtAddress.Text = "";
+        }
+
+        private void txtAddress_Leave(object sender, EventArgs e)
+        {
+            if (this.txtAddress.Text.Trim() == "")
+            {
+                this.txtAddress.Text = "IP Address";
+            }
+        }
+
+        private void txtDomain_Click(object sender, EventArgs e)
+        {
+            this.txtDomain.Text = "";
+        }
+
+        private void txtDomain_Leave(object sender, EventArgs e)
+        {
+            if (this.txtDomain.Text.Trim() == "")
+            {
+                this.txtDomain.Text = "Domain";
+            }
         }
     }
 }
