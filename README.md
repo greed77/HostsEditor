@@ -3,4 +3,4 @@ HostsEditor
 
 A GUI for the windows hosts file.
 
-Currently only works on Windows 7.
+Should work for anything that will run .NET Framework 3.5
