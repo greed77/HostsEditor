@@ -6,14 +6,26 @@ namespace HostsEditor
 {
     public partial class frmMain : Form
     {
-        public string host_file = Environment.SystemDirectory + "\\drivers\\etc\\hosts";
         public bool has_loaded_data = false;
+        public string host_file = Path.Combine(Environment.SystemDirectory, "drivers\\etc\\hosts");
+        public string backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "HostFileBackups");
+        public string backup_filename = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".hosts";
 
         public frmMain()
         {
+            //Globals.host_file = host_file;
+            //Globals.BackupDir = backup_dir;
+            //Globals.backup_filename = backup_filename;
+
             this.Icon = Properties.Resources.edit_ico;
             InitializeComponent();
             ReadHosts(host_file);
+            if (!Directory.Exists(backup_dir))
+            {
+                Directory.CreateDirectory(backup_dir);
+            }
+
+            WriteHosts(Path.Combine(backup_dir, backup_filename));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,7 +45,7 @@ namespace HostsEditor
                 MessageBox.Show(file_name + " does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            //MessageBox.Show(file_name);
             has_loaded_data = false;
             try
             {
@@ -237,6 +249,12 @@ namespace HostsEditor
             {
                 this.txtDomain.Text = "Domain";
             }
+        }
+
+        private void mnuFileBackups_Click(object sender, EventArgs e)
+        {
+            frmBackups form = new frmBackups();
+            form.Show();
         }
     }
 }

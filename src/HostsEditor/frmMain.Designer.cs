@@ -34,6 +34,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileBackups = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,6 +104,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFileImport,
             this.mnuFileExport,
+            this.mnuFileBackups,
             this.toolStripSeparator1,
             this.mnuFileExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -113,7 +115,7 @@
             // 
             this.mnuFileImport.Name = "mnuFileImport";
             this.mnuFileImport.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mnuFileImport.Size = new System.Drawing.Size(175, 22);
+            this.mnuFileImport.Size = new System.Drawing.Size(205, 22);
             this.mnuFileImport.Text = "&Import file...";
             this.mnuFileImport.Click += new System.EventHandler(this.mnuFileImport_Click);
             // 
@@ -121,20 +123,29 @@
             // 
             this.mnuFileExport.Name = "mnuFileExport";
             this.mnuFileExport.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.mnuFileExport.Size = new System.Drawing.Size(175, 22);
+            this.mnuFileExport.Size = new System.Drawing.Size(205, 22);
             this.mnuFileExport.Text = "&Export file...";
             this.mnuFileExport.Click += new System.EventHandler(this.mnuFileExport_Click);
+            // 
+            // mnuFileBackups
+            // 
+            this.mnuFileBackups.Name = "mnuFileBackups";
+            this.mnuFileBackups.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.mnuFileBackups.Size = new System.Drawing.Size(205, 22);
+            this.mnuFileBackups.Text = "Manage &Backups";
+            this.mnuFileBackups.Visible = false;
+            this.mnuFileBackups.Click += new System.EventHandler(this.mnuFileBackups_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(202, 6);
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
             this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.mnuFileExit.Size = new System.Drawing.Size(175, 22);
+            this.mnuFileExit.Size = new System.Drawing.Size(205, 22);
             this.mnuFileExit.Text = "E&xit";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
@@ -378,6 +389,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.SaveFileDialog dlgExport;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileBackups;
     }
 }
 
