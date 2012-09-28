@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace HostsEditor
 {
@@ -10,6 +11,9 @@ namespace HostsEditor
         public string host_file = Path.Combine(Environment.SystemDirectory, "drivers\\etc\\hosts");
         public string backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "HostFileBackups");
         public string backup_filename = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".hosts";
+
+        [DllImport("dnsapi.dll", EntryPoint = "DnsFlushResolverCache")]
+        private static extern UInt32 DnsFlushResolverCache();
 
         public frmMain()
         {
@@ -109,6 +113,7 @@ namespace HostsEditor
                             writer.WriteLine(newline);
                         }
                     }
+                    FlushMyCache();
                 }
                 catch (Exception ex)
                 {
@@ -255,6 +260,11 @@ namespace HostsEditor
         {
             frmBackups form = new frmBackups();
             form.Show();
+        }
+
+        public static void FlushMyCache() //This can be named whatever name you want and is the function you will call
+        {
+            UInt32 result = DnsFlushResolverCache();
         }
     }
 }
