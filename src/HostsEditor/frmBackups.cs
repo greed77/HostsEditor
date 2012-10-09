@@ -6,11 +6,20 @@ namespace HostsEditor
 {
     public partial class frmBackups : Form
     {
+        frmMain frmMain;
         public string backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "HostFileBackups");
 
         public frmBackups()
         {
             InitializeComponent();
+            LoadBackups();
+        }
+
+        public frmBackups(frmMain frm1)
+        {
+            InitializeComponent();
+            frmMain = new frmMain();
+            frmMain = frm1;
             LoadBackups();
         }
 
@@ -34,11 +43,9 @@ namespace HostsEditor
             string backup_file = Path.Combine(backup_dir, this.drpBackups.SelectedItem.ToString());
             if (MessageBox.Show("Are you sure you want to restore this backup?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                //host_file = backup_file;
-                frmMain form = new frmMain();
-                form.ReadHosts(backup_file);
+                frmMain.ReadHosts(backup_file);
+                frmMain.WriteHosts(frmMain.host_file);
                 this.Close();
-                //MessageBox.Show(backup_file);
             }
         }
 

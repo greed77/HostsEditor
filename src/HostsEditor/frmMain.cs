@@ -258,7 +258,7 @@ namespace HostsEditor
 
         private void mnuFileBackups_Click(object sender, EventArgs e)
         {
-            frmBackups form = new frmBackups();
+            frmBackups form = new frmBackups(this);
             form.Show();
         }
 

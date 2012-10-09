@@ -133,7 +133,6 @@
             this.mnuFileBackups.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.mnuFileBackups.Size = new System.Drawing.Size(205, 22);
             this.mnuFileBackups.Text = "Manage &Backups";
-            this.mnuFileBackups.Visible = false;
             this.mnuFileBackups.Click += new System.EventHandler(this.mnuFileBackups_Click);
             // 
             // toolStripSeparator1
