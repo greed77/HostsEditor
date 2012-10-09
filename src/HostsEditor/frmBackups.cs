@@ -55,7 +55,6 @@ namespace HostsEditor
 
             this.drpBackups.Items.Clear();
 
-            //this.drpBackups.DataSource = Directory.GetFiles(backup_dir);
             foreach (string backup in Directory.GetFiles(backup_dir))
             {
                 parsed_filename = Path.GetFileName(backup);

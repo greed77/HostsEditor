@@ -17,10 +17,6 @@ namespace HostsEditor
 
         public frmMain()
         {
-            //Globals.host_file = host_file;
-            //Globals.BackupDir = backup_dir;
-            //Globals.backup_filename = backup_filename;
-
             this.Icon = Properties.Resources.edit_ico;
             InitializeComponent();
             ReadHosts(host_file);
@@ -49,7 +45,6 @@ namespace HostsEditor
                 MessageBox.Show(file_name + " does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //MessageBox.Show(file_name);
             has_loaded_data = false;
             try
             {
@@ -262,7 +257,7 @@ namespace HostsEditor
             form.Show();
         }
 
-        public static void FlushMyCache() //This can be named whatever name you want and is the function you will call
+        public static void FlushMyCache()
         {
             UInt32 result = DnsFlushResolverCache();
         }
