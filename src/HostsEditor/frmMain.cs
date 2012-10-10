@@ -185,6 +185,11 @@ namespace HostsEditor
             form.Show();
         }
 
+        private void mnuAboutCheckForUpdates_Click(object sender, EventArgs e)
+        {
+            // check for updates
+        }
+
         private void mnuFileExit_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -28,25 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chkUpdate = new System.Windows.Forms.CheckBox();
+            this.chkCheckForUpdates = new System.Windows.Forms.CheckBox();
+            this.chkAutoBackup = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // chkUpdate
+            // chkCheckForUpdates
             // 
-            this.chkUpdate.AutoSize = true;
-            this.chkUpdate.Location = new System.Drawing.Point(12, 12);
-            this.chkUpdate.Name = "chkUpdate";
-            this.chkUpdate.Size = new System.Drawing.Size(163, 17);
-            this.chkUpdate.TabIndex = 0;
-            this.chkUpdate.Text = "Check for updates on startup";
-            this.chkUpdate.UseVisualStyleBackColor = true;
+            this.chkCheckForUpdates.AutoSize = true;
+            this.chkCheckForUpdates.Location = new System.Drawing.Point(12, 12);
+            this.chkCheckForUpdates.Name = "chkCheckForUpdates";
+            this.chkCheckForUpdates.Size = new System.Drawing.Size(163, 17);
+            this.chkCheckForUpdates.TabIndex = 0;
+            this.chkCheckForUpdates.Text = "Check for updates on startup";
+            this.chkCheckForUpdates.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoBackup
+            // 
+            this.chkAutoBackup.AutoSize = true;
+            this.chkAutoBackup.Location = new System.Drawing.Point(12, 35);
+            this.chkAutoBackup.Name = "chkAutoBackup";
+            this.chkAutoBackup.Size = new System.Drawing.Size(142, 17);
+            this.chkAutoBackup.TabIndex = 1;
+            this.chkAutoBackup.Text = "Make backup on launch";
+            this.chkAutoBackup.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 251);
-            this.Controls.Add(this.chkUpdate);
+            this.Controls.Add(this.chkAutoBackup);
+            this.Controls.Add(this.chkCheckForUpdates);
             this.Name = "frmSettings";
             this.Text = "Application Settings";
             this.ResumeLayout(false);
@@ -56,6 +68,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkUpdate;
+        private System.Windows.Forms.CheckBox chkCheckForUpdates;
+        private System.Windows.Forms.CheckBox chkAutoBackup;
     }
 }
