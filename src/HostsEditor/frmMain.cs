@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
-using AutoUpdaterDotNET;
+//using AutoUpdaterDotNET;
 
 namespace HostsEditor
 {
@@ -47,7 +47,7 @@ namespace HostsEditor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            AutoUpdater.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml", true);
+            //AutoUpdater.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml", true);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
