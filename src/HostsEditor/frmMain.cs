@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using AutoUpdaterDotNET;
 
 namespace HostsEditor
 {
@@ -26,6 +27,27 @@ namespace HostsEditor
             }
 
             WriteHosts(Path.Combine(backup_dir, backup_filename));
+        }
+
+        public frmMain(bool make_backup)
+        {
+            this.Icon = Properties.Resources.edit_ico;
+            InitializeComponent();
+            ReadHosts(host_file);
+            if (!Directory.Exists(backup_dir))
+            {
+                Directory.CreateDirectory(backup_dir);
+            }
+
+            if (make_backup)
+            {
+                WriteHosts(Path.Combine(backup_dir, backup_filename));
+            }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            AutoUpdater.Start("http://github.com/greed77/HostsEditor/blob/master/AutoUpdate.xml", true);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

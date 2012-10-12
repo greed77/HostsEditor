@@ -74,7 +74,7 @@
             this.btnBackupsCancel.Name = "btnBackupsCancel";
             this.btnBackupsCancel.Size = new System.Drawing.Size(75, 23);
             this.btnBackupsCancel.TabIndex = 4;
-            this.btnBackupsCancel.Text = "Cancel";
+            this.btnBackupsCancel.Text = "Close";
             this.btnBackupsCancel.UseVisualStyleBackColor = true;
             this.btnBackupsCancel.Click += new System.EventHandler(this.btnBackupsCancel_Click);
             // 

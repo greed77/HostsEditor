@@ -170,7 +170,7 @@
             // mnuAboutHelp
             // 
             this.mnuAboutHelp.Name = "mnuAboutHelp";
-            this.mnuAboutHelp.Size = new System.Drawing.Size(171, 22);
+            this.mnuAboutHelp.Size = new System.Drawing.Size(213, 22);
             this.mnuAboutHelp.Text = "&About";
             this.mnuAboutHelp.Click += new System.EventHandler(this.mnuAboutHelp_Click);
             // 
@@ -354,6 +354,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "frmMain";
             this.Text = "Hosts File Editor";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).EndInit();

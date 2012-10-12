@@ -18,7 +18,7 @@ namespace HostsEditor
         public frmBackups(frmMain frm1)
         {
             InitializeComponent();
-            frmMain = new frmMain();
+            frmMain = new frmMain(false);
             frmMain = frm1;
             LoadBackups();
         }
