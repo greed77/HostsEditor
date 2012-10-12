@@ -47,7 +47,7 @@ namespace HostsEditor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            AutoUpdater.Start("http://github.com/greed77/HostsEditor/blob/master/AutoUpdate.xml", true);
+            AutoUpdater.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml", true);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
