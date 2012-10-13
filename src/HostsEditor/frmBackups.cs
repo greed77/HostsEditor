@@ -54,7 +54,10 @@ namespace HostsEditor
         {
             this.btnBackupsDelete.Visible = true;
             this.btnBackupsRestore.Visible = true;
-            PreviewBackup(this.lstBackups.SelectedItem.ToString());
+            if (this.lstBackups.SelectedItems.Count>0)
+            {
+                PreviewBackup(this.lstBackups.SelectedItem.ToString());
+            }
         }
 
         public void LoadBackups()

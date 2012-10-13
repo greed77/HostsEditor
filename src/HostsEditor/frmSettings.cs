@@ -14,6 +14,18 @@ namespace HostsEditor
         public frmSettings()
         {
             InitializeComponent();
+            chkAutoBackup.Checked = Properties.Settings.Default.BackupOnLaunch;
+        }
+
+        private void chkAutoBackup_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BackupOnLaunch = chkAutoBackup.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
-//using AutoUpdaterDotNET;
+using dotNET_Auto_Updater;
+using System.Diagnostics;
 
 namespace HostsEditor
 {
@@ -26,7 +27,10 @@ namespace HostsEditor
                 Directory.CreateDirectory(backup_dir);
             }
 
-            WriteHosts(Path.Combine(backup_dir, backup_filename));
+            if (Properties.Settings.Default.BackupOnLaunch)
+            {
+                WriteHosts(Path.Combine(backup_dir, backup_filename));
+            }
         }
 
         public frmMain(bool make_backup)
@@ -47,7 +51,7 @@ namespace HostsEditor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //AutoUpdater.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml", true);
+            //clsUpdateCheck.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -281,6 +285,12 @@ namespace HostsEditor
         private void mnuFileBackups_Click(object sender, EventArgs e)
         {
             frmBackups form = new frmBackups(this);
+            form.Show();
+        }
+
+        private void mnuFilePreferences_Click(object sender, EventArgs e)
+        {
+            frmSettings form = new frmSettings();
             form.Show();
         }
 

@@ -57,6 +57,7 @@
             this.btnAdvancedSave = new System.Windows.Forms.Button();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgExport = new System.Windows.Forms.SaveFileDialog();
+            this.mnuFilePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).BeginInit();
             this.pnlBottom.SuspendLayout();
@@ -106,6 +107,7 @@
             this.mnuFileImport,
             this.mnuFileExport,
             this.mnuFileBackups,
+            this.mnuFilePreferences,
             this.toolStripSeparator1,
             this.mnuFileExit});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -342,6 +344,14 @@
             this.dlgExport.Filter = "Host Editor Files|*.hosts";
             this.dlgExport.Title = "Export hosts File";
             // 
+            // mnuFilePreferences
+            // 
+            this.mnuFilePreferences.Name = "mnuFilePreferences";
+            this.mnuFilePreferences.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.mnuFilePreferences.Size = new System.Drawing.Size(205, 22);
+            this.mnuFilePreferences.Text = "Preferences";
+            this.mnuFilePreferences.Click += new System.EventHandler(this.mnuFilePreferences_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,6 +412,7 @@
         private System.Windows.Forms.SaveFileDialog dlgExport;
         private System.Windows.Forms.ToolStripMenuItem mnuFileBackups;
         private System.Windows.Forms.ToolStripMenuItem mnuAboutCheckForUpdates;
+        private System.Windows.Forms.ToolStripMenuItem mnuFilePreferences;
     }
 }
 
