@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace HostsEditor
 {
@@ -58,6 +59,11 @@ namespace HostsEditor
             {
                 PreviewBackup(this.lstBackups.SelectedItem.ToString());
             }
+        }
+
+        private void lstBackups_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Debug.WriteLine(e.KeyChar);
         }
 
         public void LoadBackups()

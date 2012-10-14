@@ -104,6 +104,7 @@
             this.lstBackups.Size = new System.Drawing.Size(186, 277);
             this.lstBackups.TabIndex = 7;
             this.lstBackups.SelectedIndexChanged += new System.EventHandler(this.lstBackups_SelectedIndexChanged);
+            this.lstBackups.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lstBackups_KeyPress);
             // 
             // frmBackups
             // 
