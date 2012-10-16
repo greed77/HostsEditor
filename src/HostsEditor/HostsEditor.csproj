@@ -49,9 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ManifestCertificateThumbprint>072543D24BF1FD1DFDFCD70401EF9FECA8DFE133</ManifestCertificateThumbprint>
   </PropertyGroup>
@@ -69,6 +67,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\file_edit.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

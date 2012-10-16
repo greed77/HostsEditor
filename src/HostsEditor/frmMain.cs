@@ -9,6 +9,8 @@ namespace HostsEditor
 {
     public partial class frmMain : Form
     {
+        public string update_url = "https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml";
+
         public bool has_loaded_data = false;
         public string host_file = Path.Combine(Environment.SystemDirectory, "drivers\\etc\\hosts");
         public string backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "HostFileBackups");
@@ -53,7 +55,7 @@ namespace HostsEditor
         {
             try
             {
-                clsUpdateCheck.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml");
+                clsUpdateCheck.CheckForUpdates(update_url);
             }
             catch(Exception ex)
             {
