@@ -11,7 +11,7 @@ TestResults
 # User-specific files
 *.suo
 *.user
-#*.sln.docstates
+*.sln.docstates
 
 # Build results
 [Dd]ebug/

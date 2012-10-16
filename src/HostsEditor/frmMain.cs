@@ -51,7 +51,14 @@ namespace HostsEditor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            clsUpdateCheck.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml");
+            try
+            {
+                clsUpdateCheck.Start("https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml");
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
