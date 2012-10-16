@@ -173,6 +173,7 @@
     <ProjectReference Include="..\..\..\dotNET-Auto-Updater\src\dotNET-Auto-Updater\dotNET-Auto-Updater.csproj">
       <Project>{30B10E32-0FA1-4E10-A418-25C35FFB59FC}</Project>
       <Name>dotNET-Auto-Updater</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
