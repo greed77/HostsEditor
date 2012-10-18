@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "HostsEditor"
-#define MyAppVersion "1.4.1"
+#define MyAppVersion "1.5.0"
 #define MyAppExeName "HostsEditor.exe"
 
 [Setup]
@@ -57,8 +57,8 @@ Filename: {app}\{#MyAppExeName}; Description: {cm:LaunchProgram,{#StringChange(M
 
 [Code]
 function InitializeSetup(): Boolean;
-
 begin
+	// .NET 3.5 framework check / install
 	dotnetfx35sp1();
 	Result := true;
 end;
