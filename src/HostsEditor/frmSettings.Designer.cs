@@ -36,13 +36,13 @@
             // chkCheckForUpdates
             // 
             this.chkCheckForUpdates.AutoSize = true;
-            this.chkCheckForUpdates.Enabled = false;
             this.chkCheckForUpdates.Location = new System.Drawing.Point(12, 12);
             this.chkCheckForUpdates.Name = "chkCheckForUpdates";
             this.chkCheckForUpdates.Size = new System.Drawing.Size(163, 17);
             this.chkCheckForUpdates.TabIndex = 0;
             this.chkCheckForUpdates.Text = "Check for updates on startup";
             this.chkCheckForUpdates.UseVisualStyleBackColor = true;
+            this.chkCheckForUpdates.CheckedChanged += new System.EventHandler(this.chkCheckForUpdates_CheckedChanged);
             // 
             // chkAutoBackup
             // 

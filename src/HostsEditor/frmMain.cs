@@ -4,6 +4,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 using dotNET_Auto_Updater;
 using System.Diagnostics;
+//using System.Threading;
+//using System.Reflection;
 
 namespace HostsEditor
 {
@@ -55,7 +57,10 @@ namespace HostsEditor
         {
             try
             {
-                clsUpdateCheck.CheckForUpdates(update_url);
+                if (Properties.Settings.Default.CheckForUpdates)
+                {
+                    clsUpdateCheck.CheckForUpdates(update_url);
+                }
             }
             catch(Exception ex)
             {

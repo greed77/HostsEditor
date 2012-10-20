@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
 using System.Windows.Forms;
 
 namespace HostsEditor
@@ -15,11 +15,18 @@ namespace HostsEditor
         {
             InitializeComponent();
             chkAutoBackup.Checked = Properties.Settings.Default.BackupOnLaunch;
+            chkCheckForUpdates.Checked = Properties.Settings.Default.CheckForUpdates;
         }
 
         private void chkAutoBackup_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.BackupOnLaunch = chkAutoBackup.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void chkCheckForUpdates_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.CheckForUpdates = chkCheckForUpdates.Checked;
             Properties.Settings.Default.Save();
         }
 
