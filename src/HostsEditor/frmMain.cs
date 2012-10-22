@@ -4,8 +4,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using dotNET_Auto_Updater;
 using System.Diagnostics;
-//using System.Threading;
-//using System.Reflection;
 
 namespace HostsEditor
 {
@@ -228,6 +226,7 @@ namespace HostsEditor
         private void mnuAboutCheckForUpdates_Click(object sender, EventArgs e)
         {
             // check for updates
+            clsUpdateCheck.CheckForUpdates(update_url, true);
         }
 
         private void mnuFileExit_Click(object sender, EventArgs e)

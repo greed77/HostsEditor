@@ -35,6 +35,7 @@
             this.mnuFileImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileBackups = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFilePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,6 @@
             this.btnAdvancedSave = new System.Windows.Forms.Button();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgExport = new System.Windows.Forms.SaveFileDialog();
-            this.mnuFilePreferences = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).BeginInit();
             this.pnlBottom.SuspendLayout();
@@ -138,6 +138,14 @@
             this.mnuFileBackups.Text = "Manage &Backups";
             this.mnuFileBackups.Click += new System.EventHandler(this.mnuFileBackups_Click);
             // 
+            // mnuFilePreferences
+            // 
+            this.mnuFilePreferences.Name = "mnuFilePreferences";
+            this.mnuFilePreferences.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.mnuFilePreferences.Size = new System.Drawing.Size(205, 22);
+            this.mnuFilePreferences.Text = "Preferences";
+            this.mnuFilePreferences.Click += new System.EventHandler(this.mnuFilePreferences_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -166,7 +174,6 @@
             this.mnuAboutCheckForUpdates.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.mnuAboutCheckForUpdates.Size = new System.Drawing.Size(213, 22);
             this.mnuAboutCheckForUpdates.Text = "Check for Updates";
-            this.mnuAboutCheckForUpdates.Visible = false;
             this.mnuAboutCheckForUpdates.Click += new System.EventHandler(this.mnuAboutCheckForUpdates_Click);
             // 
             // mnuAboutHelp
@@ -343,14 +350,6 @@
             this.dlgExport.DefaultExt = "hosts";
             this.dlgExport.Filter = "Host Editor Files|*.hosts";
             this.dlgExport.Title = "Export hosts File";
-            // 
-            // mnuFilePreferences
-            // 
-            this.mnuFilePreferences.Name = "mnuFilePreferences";
-            this.mnuFilePreferences.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.mnuFilePreferences.Size = new System.Drawing.Size(205, 22);
-            this.mnuFilePreferences.Text = "Preferences";
-            this.mnuFilePreferences.Click += new System.EventHandler(this.mnuFilePreferences_Click);
             // 
             // frmMain
             // 
