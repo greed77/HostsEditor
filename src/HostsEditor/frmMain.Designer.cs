@@ -154,9 +154,9 @@
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.mnuFileExit.Size = new System.Drawing.Size(205, 22);
-            this.mnuFileExit.Text = "E&xit";
+            this.mnuFileExit.Text = "&Quit";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
             // helpToolStripMenuItem

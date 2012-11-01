@@ -271,7 +271,11 @@ namespace HostsEditor
 
         private void txtAddress_Click(object sender, EventArgs e)
         {
-            this.txtAddress.Text = "";
+            // this.txtAddress.Text = "";
+            if (this.txtAddress.Text.Trim() == "IP Address")
+            {
+                this.txtAddress.Text = "";
+            }
         }
 
         private void txtAddress_Leave(object sender, EventArgs e)
@@ -284,7 +288,11 @@ namespace HostsEditor
 
         private void txtDomain_Click(object sender, EventArgs e)
         {
-            this.txtDomain.Text = "";
+            // this.txtDomain.Text = "";
+            if (this.txtDomain.Text.Trim() == "Domain")
+            {
+                this.txtDomain.Text = "";
+            }
         }
 
         private void txtDomain_Leave(object sender, EventArgs e)
