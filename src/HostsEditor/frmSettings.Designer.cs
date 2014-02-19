@@ -31,6 +31,7 @@
             this.chkCheckForUpdates = new System.Windows.Forms.CheckBox();
             this.chkAutoBackup = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.chkFlushDNS = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // chkCheckForUpdates
@@ -65,11 +66,23 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // chkFlushDNS
+            // 
+            this.chkFlushDNS.AutoSize = true;
+            this.chkFlushDNS.Location = new System.Drawing.Point(12, 58);
+            this.chkFlushDNS.Name = "chkFlushDNS";
+            this.chkFlushDNS.Size = new System.Drawing.Size(118, 17);
+            this.chkFlushDNS.TabIndex = 3;
+            this.chkFlushDNS.Text = "Flush DNS on save";
+            this.chkFlushDNS.UseVisualStyleBackColor = true;
+            this.chkFlushDNS.CheckedChanged += new System.EventHandler(this.chkFlushDNS_CheckedChanged);
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 251);
+            this.Controls.Add(this.chkFlushDNS);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.chkAutoBackup);
             this.Controls.Add(this.chkCheckForUpdates);
@@ -85,5 +98,6 @@
         private System.Windows.Forms.CheckBox chkCheckForUpdates;
         private System.Windows.Forms.CheckBox chkAutoBackup;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.CheckBox chkFlushDNS;
     }
 }

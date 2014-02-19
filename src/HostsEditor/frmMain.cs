@@ -146,7 +146,6 @@ namespace HostsEditor
                             writer.WriteLine(newline);
                         }
                     }
-                    FlushMyCache();
                 }
                 catch (Exception ex)
                 {
@@ -182,6 +181,11 @@ namespace HostsEditor
                 this.txtDomain.Text = "";
 
                 WriteHosts(host_file);
+
+                if (Properties.Settings.Default.FlushDNSOnSave)
+                {
+                    FlushMyCache();
+                }
             }
         }
 
