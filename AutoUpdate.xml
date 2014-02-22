@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <items>
-	<item action="install" version="1.5.7.0">
+	<item action="install" version="1.5.8.0">
 		<title>New version is available for HostsEditor</title>
 		<version>1.5.7.0</version>
 		<url>https://raw.github.com/greed77/HostsEditor/master/setup/HostsEditor_setup.exe</url>
