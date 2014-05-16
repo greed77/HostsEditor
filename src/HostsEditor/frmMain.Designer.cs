@@ -39,7 +39,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAboutCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAboutHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvHosts = new System.Windows.Forms.DataGridView();
@@ -162,24 +161,15 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAboutCheckForUpdates,
             this.mnuAboutHelp});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // mnuAboutCheckForUpdates
-            // 
-            this.mnuAboutCheckForUpdates.Name = "mnuAboutCheckForUpdates";
-            this.mnuAboutCheckForUpdates.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.mnuAboutCheckForUpdates.Size = new System.Drawing.Size(213, 22);
-            this.mnuAboutCheckForUpdates.Text = "Check for Updates";
-            this.mnuAboutCheckForUpdates.Click += new System.EventHandler(this.mnuAboutCheckForUpdates_Click);
-            // 
             // mnuAboutHelp
             // 
             this.mnuAboutHelp.Name = "mnuAboutHelp";
-            this.mnuAboutHelp.Size = new System.Drawing.Size(213, 22);
+            this.mnuAboutHelp.Size = new System.Drawing.Size(152, 22);
             this.mnuAboutHelp.Text = "&About";
             this.mnuAboutHelp.Click += new System.EventHandler(this.mnuAboutHelp_Click);
             // 
@@ -410,7 +400,6 @@
         private System.Windows.Forms.OpenFileDialog dlgOpen;
         private System.Windows.Forms.SaveFileDialog dlgExport;
         private System.Windows.Forms.ToolStripMenuItem mnuFileBackups;
-        private System.Windows.Forms.ToolStripMenuItem mnuAboutCheckForUpdates;
         private System.Windows.Forms.ToolStripMenuItem mnuFilePreferences;
     }
 }

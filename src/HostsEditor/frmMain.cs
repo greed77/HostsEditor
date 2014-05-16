@@ -2,15 +2,12 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
-using dotNET_Auto_Updater;
 using System.Diagnostics;
 
 namespace HostsEditor
 {
     public partial class frmMain : Form
     {
-        public string update_url = "https://raw.github.com/greed77/HostsEditor/master/AutoUpdate.xml";
-
         public bool has_loaded_data = false;
         public string host_file = Path.Combine(Environment.SystemDirectory, "drivers\\etc\\hosts");
         public string backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "HostFileBackups");
@@ -53,17 +50,6 @@ namespace HostsEditor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (Properties.Settings.Default.CheckForUpdates)
-                {
-                    clsUpdateCheck.CheckForUpdates(update_url);
-                }
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -225,12 +211,6 @@ namespace HostsEditor
         {
             frmAbout form = new frmAbout();
             form.Show();
-        }
-
-        private void mnuAboutCheckForUpdates_Click(object sender, EventArgs e)
-        {
-            // check for updates
-            clsUpdateCheck.CheckForUpdates(update_url, true);
         }
 
         private void mnuFileExit_Click(object sender, EventArgs e)

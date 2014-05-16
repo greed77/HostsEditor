@@ -170,11 +170,7 @@
     <None Include="Resources\file_edit.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\dotNET-Auto-Updater\src\dotNET-Auto-Updater\dotNET-Auto-Updater.csproj">
-      <Project>{30B10E32-0FA1-4E10-A418-25C35FFB59FC}</Project>
-      <Name>dotNET-Auto-Updater</Name>
-      <Private>True</Private>
-    </ProjectReference>
+    <Content Include="Resources\btn_donate_LG.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

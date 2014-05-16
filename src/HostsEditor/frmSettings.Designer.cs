@@ -37,6 +37,7 @@
             // chkCheckForUpdates
             // 
             this.chkCheckForUpdates.AutoSize = true;
+            this.chkCheckForUpdates.Enabled = false;
             this.chkCheckForUpdates.Location = new System.Drawing.Point(12, 12);
             this.chkCheckForUpdates.Name = "chkCheckForUpdates";
             this.chkCheckForUpdates.Size = new System.Drawing.Size(163, 17);

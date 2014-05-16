@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "HostsEditor"
-#define MyAppVersion "1.5.8"
+#define MyAppVersion "1.6.0"
 #define MyAppExeName "HostsEditor.exe"
 
 [Setup]
@@ -22,7 +22,7 @@ SolidCompression=true
 AllowNoIcons=true
 ShowLanguageDialog=auto
 VersionInfoVersion={#MyAppVersion}
-VersionInfoCopyright=2012
+VersionInfoCopyright=2014
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
 VersionInfoDescription=Windows hosts file editor
@@ -39,7 +39,7 @@ Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription
 
 [Files]
 Source: ..\HostsEditor.exe; DestDir: {app}; Flags: ignoreversion
-Source: ..\dotNET-Auto-Updater.dll; DestDir: {app}; Flags: ignoreversion
+;Source: ..\dotNET-Auto-Updater.dll; DestDir: {app}; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
