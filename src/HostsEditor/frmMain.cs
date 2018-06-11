@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using AutoUpdaterDotNET;
 
 namespace HostsEditor
 {
@@ -302,6 +303,11 @@ namespace HostsEditor
         public static void FlushMyCache()
         {
             UInt32 result = DnsFlushResolverCache();
+        }
+
+        private void mnuAboutUpdate_Click(object sender, EventArgs e)
+        {
+            //AutoUpdater.Start("http://raw.githubusercontent.com/greed77/HostsEditor/master/AutoUpdater.xml");
         }
     }
 }

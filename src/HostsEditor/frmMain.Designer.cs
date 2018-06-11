@@ -57,6 +57,7 @@
             this.btnAdvancedSave = new System.Windows.Forms.Button();
             this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
             this.dlgExport = new System.Windows.Forms.SaveFileDialog();
+            this.mnuAboutUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHosts)).BeginInit();
             this.pnlBottom.SuspendLayout();
@@ -161,7 +162,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAboutHelp});
+            this.mnuAboutHelp,
+            this.mnuAboutUpdate});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
@@ -169,7 +171,7 @@
             // mnuAboutHelp
             // 
             this.mnuAboutHelp.Name = "mnuAboutHelp";
-            this.mnuAboutHelp.Size = new System.Drawing.Size(152, 22);
+            this.mnuAboutHelp.Size = new System.Drawing.Size(180, 22);
             this.mnuAboutHelp.Text = "&About";
             this.mnuAboutHelp.Click += new System.EventHandler(this.mnuAboutHelp_Click);
             // 
@@ -341,6 +343,13 @@
             this.dlgExport.Filter = "Host Editor Files|*.hosts";
             this.dlgExport.Title = "Export hosts File";
             // 
+            // mnuAboutUpdate
+            // 
+            this.mnuAboutUpdate.Name = "mnuAboutUpdate";
+            this.mnuAboutUpdate.Size = new System.Drawing.Size(180, 22);
+            this.mnuAboutUpdate.Text = "Check for &Update";
+            this.mnuAboutUpdate.Click += new System.EventHandler(this.mnuAboutUpdate_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,6 +410,7 @@
         private System.Windows.Forms.SaveFileDialog dlgExport;
         private System.Windows.Forms.ToolStripMenuItem mnuFileBackups;
         private System.Windows.Forms.ToolStripMenuItem mnuFilePreferences;
+        private System.Windows.Forms.ToolStripMenuItem mnuAboutUpdate;
     }
 }
 
