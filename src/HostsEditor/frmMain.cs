@@ -308,9 +308,8 @@ namespace HostsEditor
         private void mnuAboutUpdate_Click(object sender, EventArgs e)
         {
             AutoUpdater.ReportErrors = true;
-            string url = "https://rbsoft.org/updates/AutoUpdaterTest.xml";
-            //string url = "https://raw.githubusercontent.com/greed77/HostsEditor/master/AutoUpdater.xml";
-            //MessageBox.Show(url);
+            //string url = "https://rbsoft.org/updates/AutoUpdaterTest.xml";
+            string url = "https://raw.githubusercontent.com/greed77/HostsEditor/master/AutoUpdater.xml";
             AutoUpdater.Start(url);
         }
     }
